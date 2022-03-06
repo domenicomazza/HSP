@@ -1,6 +1,8 @@
 # HTML Simple Publishing (HSP) <sup>v1.0.0</sup> Documentation 
 
-HTML Simple Publishing (HSP) allows you to make easy to navigate publications for the web. HSP uses JavaScript (JS) and CSS styling to turn well-formatted HTML into neat publications you can put on the web and generate into print PDFs.
+[HTML Simple Publishing (HSP)](https://github.com/domenicomazza/HSP) allows you to make easy to navigate publications for the web. HSP uses JavaScript (JS) and CSS styling to turn well-formatted HTML into neat publications you can put on the web and generate into print PDFs.
+
+Read this documentation formatted with HSP at: [https://domenicomazza.github.io/HSP/](https://domenicomazza.github.io/HSP/).
 
 ## Features
 
@@ -12,7 +14,13 @@ HSP extends a HTML web document to do the nice things one would find in a docume
 - **Followable section links** to guide a reader to a specific element in the document (just right click and 'Copy Link' for any link)
 - **Bibliography item A-Z sorting and organisation** which makes links clickable with special recognition of YouTube and Vimeo links
 - **Automatic cross-reference formatting** for section headings, bibliography items, figures and tables—just give your anchor an internal link
-- **Print ready PDF formatting and automatic heading bookmarks** not supported by web browsers, but accessible via [Prince](https://www.princexml.com) which leverages [CSS Paged Media](https://www.w3.org/TR/css-page-3/)
+- **Automatic lists** - **Print ready PDF formatting and automatic heading bookmarks** not supported by web browsers, but accessible via [Prince](https://www.princexml.com) which leverages [CSS Paged Media](https://www.w3.org/TR/css-page-3/)
+
+## Demos
+
+Two demos are included in the `/demo` directory:
+- `/demo/exegesis`: a [PhD exegesis](https://domenicomazza.github.io/HSP/demo/exegesis/) with all features in action
+- `/demo/exhibition`: a [PhD exhibition documentation](https://domenicomazza.github.io/HSP/demo/exhibition/) with an emphasis on multimedia
 
 ## Recommendations
 
