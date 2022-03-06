@@ -14,7 +14,8 @@ HSP extends a HTML web document to do the nice things one would find in a docume
 - **Followable section links** to guide a reader to a specific element in the document (just right click and 'Copy Link' for any link)
 - **Bibliography item A-Z sorting and organisation** which makes links clickable with special recognition of YouTube and Vimeo links
 - **Automatic cross-reference formatting** for section headings, bibliography items, figures and tables—just give your anchor an internal link
-- **Automatic lists** - **Print ready PDF formatting and automatic heading bookmarks** not supported by web browsers, but accessible via [Prince](https://www.princexml.com) which leverages [CSS Paged Media](https://www.w3.org/TR/css-page-3/)
+- **Automatic lists** such as contents, list of figures and list of tables
+- **Print ready PDF formatting and automatic heading bookmarks** not supported by web browsers, but accessible via [Prince](https://www.princexml.com) which leverages [CSS Paged Media](https://www.w3.org/TR/css-page-3/)
 
 ## Demos
 
