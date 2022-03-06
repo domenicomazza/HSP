@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>HSP - HTML Simple Publishing - Documentation</title>
+	<script src="master-script.js"></script>
+	<link rel="stylesheet" href="stylesheet.css">
+	<style type="text/css">
+		body{
+			--navBgColour: orange;/* overwrite the side menu background colour with this CSS variable */
+		}
+	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+	<div id="nav" class="closed noprint noselect">
+		<span>
+			<button onclick="showNav(true)">Show Contents</button>
+		</span>
+		<nav>
+			<button onclick="showNav(false)">Hide Contents</button>
+		</nav><!-- Automatically populated with links based on headings //-->
+	</div>
+
+	<main>
+
+	<article>
+
+
+		<h1>HTML Simple Publishing (HSP)<sup style="font-size:.5em;margin-left:.5em">v1.0.0</sup> Documentation</h1>
+
+		<p>HTML Simple Publishing (HSP) allows you to make easy to navigate publications for the web. HSP uses JavaScript (JS) and CSS styling to turn well-formatted HTML into neat publications you can put on the web and generate into print PDFs.</p>
+
+		<h2>Features</h2>
+
+		<p>HSP extends a HTML web document to do the nice things one would find in a document preparation system like LaTeX such as neat cross-references and section numbering. HSP features:</p>
+
+		<ul>
+		<li><strong>Responsive layout</strong> which works on screens small and large</li>
+		<li><strong>Pop-out Side Menu</strong> that allows the reader to quickly skip through sections or see where they are in the document</li>
+		<li><strong>Silent session saving</strong> so the user can come back to where they left off when re-opening a document on the same device and web browser</li>
+		<li><strong>Followable section links</strong> to guide a reader to a specific element in the document (just right click and 'Copy Link' for any link)</li>
+		<li><strong>Bibliography item A-Z sorting and organisation</strong> which makes links clickable with special recognition of YouTube and Vimeo links</li>
+		<li><strong>Automatic cross-reference formatting</strong> for section headings, bibliography items, figures and tables—just give your anchor an internal link</li>
+		<li><strong>Print ready PDF formatting and automatic heading bookmarks</strong> not supported by web browsers, but accessible via <a href="https://www.princexml.com" target="_blank">Prince</a> which leverages <a href="https://www.w3.org/TR/css-page-3/" target="_blank">CSS Paged Media</a></li>
+		</ul>
+
+		<h2>Recommendations</h2>
+
+		<p>To enjoy using HSP it's recommended you have:</p>
+
+		<ul>
+		<li>Basic HTML knowledge. Great guides are available at <a href="https://www.codecademy.com/learn/learn-html" target="_blank">Codecademy's Learn HTML</a> or <a href="https://www.w3schools.com/html/default.asp" target="_blank">W3Schools' HTML Tutorial</a></li>
+		<li>Basic CSS knowledge, such that <a href="https://www.w3schools.com/css/css_selectors.asp" target="_blank">selectors</a> make sense</li>
+		<li>The ability write Markdown and export HTML documents using an application such as <a href="https://ia.net/writer" target="_blank">iA Writer</a>. This is a better option than manually writing all your HTML tags</li>
+		</ul>
+
+		<p>To get your hands dirty with HSP, plain JavaScript is all you need and Codecademy once again has a great <a href="https://www.codecademy.com/learn/introduction-to-javascript" target="_blank">Introduction to Javascript</a>.</p>
+
+		<h2>Structure</h2>
+
+		<p>You can explore fully featured demos in the <code>/demo</code> directory. These HSP documents are made of:</p>
+
+		<ul>
+		<li>A HTML document. The writing you see goes in-between the <code>&lt;article&gt;</code> tags</li>
+		<li>JavaScript <code>master-script.js</code> which processes the HTML to populate links, populate navigation and lists. It also assists with navigation by saving and loading the reader's view and highlighting the current section being read</li>
+		<li>CSS <code>stylesheet.css</code> contains all the default style rules</li>
+		</ul>
+
+		<h2>HTML</h2>
+
+		<p>HSP treats some HTML tags in a particular way. Consider the tags below as HTML tags that have special meaning to HSP, or can be leveraged in other helpful ways.</p>
+
+		<figure id="tab-html-tags">
+			<table>
+				<thead>
+				<tr>
+					<th>HTML</th>
+					<th>Usage</th>
+					<th>Note</th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<tr>
+					<td><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code>, <code>&lt;h6&gt;</code>,</td>
+					<td>Enclose your headings with these heading tags. <code>&lt;h1&gt;</code> signifies the highest level heading while <code>&lt;h6&gt;</code> signifies the lowest level.</td>
+					<td>HSP honours <code>&lt;h1&gt;</code> as your document title so section numbering begins from <code>&lt;h2&gt;</code> (e.g. 1 Subtitle) and <code>&lt;h4&gt;</code> defines a section number three levels deep (e.g. 1.2.2 Sub-sub-subtitle). <code>&lt;h6&gt;</code> being five levels deep does not get numbered by HSP.</td>
+				</tr>
+				<tr>
+					<td><code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code></td>
+					<td>Use <code>&lt;figure&gt;</code> to enclose images and tables and <code>&lt;figcaption&gt;</code> for the associated caption</td>
+					<td>HSP reads <code>&lt;figure&gt;</code> for figure and table numbering. It will detect <code>&lt;table&gt;</code> nested inside <code>&lt;figure&gt;</code> and name anything that's not a table a <em>figure</em></td>
+				</tr>
+				<tr>
+					<td><code>&lt;table&gt;</code> (or class <code>table</code> applied to an element) inside <code>&lt;figure&gt;</code></td>
+					<td>To add your table to the list of tables <code>tableListDiv</code> if available</td>
+					<td>You can substitute a <code>&lt;table&gt;</code> element with any element assigned the class <code>table</code> in instances where you prefer to not use a native HTML table</td>
+				</tr>
+				<tr>
+					<td><code>&lt;div&gt;</code></td>
+					<td><code>&lt;div&gt;</code> serves to enclose content (in CSS <code>block</code> style). Web browsers give no special visual attribute to <code>&lt;div&gt;</code>.</td>
+					<td>Great for defining 'list of figures' areas or setting up page breaks for print using the <code>pagebreak</code> class</td>
+				</tr>
+				<tr>
+					<td><code>&lt;span&gt;</code></td>
+					<td><code>&lt;span&gt;</code> serves to enclose content (in CSS <code>inline</code> style). Web browsers give no special visual attribute to <code>&lt;span&gt;</code>.</td>
+					<td>Great for styling text with your own custom CSS classes or preset classes such as <code>greyout</code> or <code>secondary</code></td>
+				</tr>
+				</tbody>
+			</table>
+		</figure>
+
+		<h2>Classes and IDs</h2>
+
+		<p>HSP looks for specific classes and IDs to perform actions related to compiling lists and building the side menu navigation. There are also CSS classes to help with common formatting requirements and print-ready styling. These classes and IDs are recommended for particular HTML elements.</p>
+
+		<h3 id="list-ids">List IDs</h3>
+
+		<p>HSP generates automatic lists of headings, figures and tables. Below are the IDs instruct where HSP should output these lists if you need them.</p>
+
+		<figure id="tab-list-ids" class="fullwidth">
+			<table style="width:100%">
+				<thead>
+				<tr>
+					<th>ID</th>
+					<th>Usage</th>
+					<th>Recommended for</th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<tr>
+					<td><code>contentsDiv</code></td>
+					<td>container for contents list</td>
+					<td><code>&lt;div&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>figureListDiv</code></td>
+					<td>container for list of figures</td>
+					<td><code>&lt;div&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>tableListDiv</code></td>
+					<td>container for list of tables</td>
+					<td><code>&lt;div&gt;</code></td>
+				</tr>
+				</tbody>
+			</table>
+		</figure>
+
+		<h3 id="navigation-classes">Navigation classes</h3>
+
+		<p>Below are classes which help with formatting things related to navigation of a HSP publication.</p>
+
+		<figure id="tab-nav-classes">
+			<table>
+				<thead>
+				<tr>
+					<th>Class</th>
+					<th>Functionality</th>
+					<th>Use</th>
+					<th>Compatible with</th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<tr>
+					<td><code>open</code> or <code>closed</code></td>
+					<td>Will by default open or close the side menu on load. Nb. this does not override the saved open or closed state</td>
+					<td>When the side menu needs to be open or closed by default</td>
+					<td><code>&lt;div id='nav'&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>hidetarget</code></td>
+					<td>Removes menu highlighting on applied heading</td>
+					<td>Wherever you might prefer the parent element to be highlighted instead e.g. very small sections of text</td>
+					<td><code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>nocount</code></td>
+					<td>Skips automatic counting on the applied heading. Useful for sections that are not numbered.</td>
+					<td>Useful for front matter headings e.g. preface, list of figures, etc.</td>
+					<td><code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>nolist</code></td>
+					<td>Apply this to titles to hide them from the menu</td>
+					<td>For content that only appears in print e.g. a table of contents heading</td>
+					<td><code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>appendix</code></td>
+					<td>Add this class to your appendix headings for appropriate numbering of appendices prefixed with letters e.g. A.1 or B.2.1</td>
+					<td>Appendix numbering</td>
+					<td><code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code></td>
+				</tr>
+				</tbody>
+			</table>
+		</figure>
+
+		<h3>Additional text styles</h3>
+
+		<p>Below are classes which help with styling text in a HSP publication. Most text is styled based on its HTML tag, for additional styles it's recommended to utilise a custom CSS stylesheet as shown in the demo folder.</p>
+
+		<figure id="tab-additional-text">
+			<table>
+				<thead>
+				<tr>
+					<th>Class</th>
+					<th>Functionality</th>
+					<th>Use</th>
+					<th>Compatible with</th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<tr>
+					<td><code>center</code></td>
+					<td>Will center an element</td>
+					<td>For center aligning headings or blocks of text</td>
+					<td>Text elements such as <code>&lt;h1&gt;</code> or <code>&lt;p&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>greyout</code></td>
+					<td>Greys out text anywhere in the document when applied to a <code>&lt;span&gt;</code></td>
+					<td>For greying out text outside of figure/table captions</td>
+					<td><code>&lt;span&gt;</code></td>
+				</tr>
+				</tbody>
+			</table>
+		</figure>
+
+		<p>Note, you can leverage HTML for text styling such as <code>&lt;sup&gt;</code> for superscript text. In addition to formatting, such as <code>&lt;ul&gt;</code> for unordered lists and <code>&lt;ol&gt;</code> for ordered lists.</p>
+
+		<h3>Figure styles</h3>
+
+		<p>Styles for figure in HSP. Applied to <code>&lt;figure&gt;</code> or <code>&lt;figcaption&gt;</code></p>
+
+		<figure id="tab-figure-styles">
+			<table>
+				<thead>
+				<tr>
+					<th>Class</th>
+					<th>Functionality</th>
+					<th>Use</th>
+					<th>Compatible with</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td><code>sidebyside</code></td>
+					<td>Place images two to a row</td>
+					<td>Image grid</td>
+					<td><code>&lt;figure&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>sidebysidethree</code></td>
+					<td>Place images three to a row</td>
+					<td>Image grid</td>
+					<td><code>&lt;figure&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>sidebysidefour</code></td>
+					<td>Place images four to a row</td>
+					<td>Image grid</td>
+					<td><code>&lt;figure&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>fullwidth</code></td>
+					<td>Set a <code>&lt;figure&gt;</code> to occupy the full text block width</td>
+					<td>For tables and images which can benefit from full width</td>
+					<td><code>&lt;figure&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>halfwidth</code></td>
+					<td>Set a <code>&lt;figure&gt;</code> to occupy the half of the text block width</td>
+					<td>For tall images</td>
+					<td><code>&lt;figure&gt;</code></td>
+				</tr>
+				<tr>
+					<td><code>secondary</code></td>
+					<td>Greys out and reduces the size of secondary text in <code>&lt;figcaption&gt;</code> when applied to a <code>&lt;span&gt;</code>. Greyed out style is also applied in list of figures/tables</td>
+					<td>For secondary text in figures such as copyright notices</td>
+					<td><code>&lt;span&gt;</code> in <code>&lt;figcaption&gt;</code></td>
+				</tr>
+				</tbody>
+			</table>
+		</figure>
+
+		<h3>Print classes</h3>
+
+		<p>Below are classes for print styling. Additional styles should be written in standalone custom stylesheets as shown in the demo folder.</p>
+
+		<figure id="tab-print-classes">
+			<table>
+				<thead>
+				<tr>
+					<th>Class</th>
+					<th>Functionality</th>
+					<th>Use</th>
+					<th>Compatible with</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td><code>noprint</code></td>
+					<td>Do not show an element in print</td>
+					<td>Avoid print out of digital content such as the side menu</td>
+					<td>any HTML element</td>
+				</tr>
+				<tr>
+					<td><code>printonly</code></td>
+					<td>Show an element only in print</td>
+					<td>For replacing digital content (e.g. show list of contents while hiding the side menu with <code>noprint</code>), adding print only content such as a contents page, or adding special notes for print.</td>
+					<td>any HTML element</td>
+				</tr>
+				<tr>
+					<td><code>frontmatter</code></td>
+					<td>Defines front matter headings. The first instance of the class is used as the point in which to start counting in lowercase roman numerals</td>
+					<td>Show lowercase roman numerals</td>
+					<td>Apply to heading tags in frontmatter</td>
+				</tr>
+				<tr>
+					<td><code>pagenumreset</code></td>
+					<td>Resets page numbering for print</td>
+					<td>Useful for defining when numeric page numbers start (allows lower case roman numerals to end)</td>
+					<td>Best applied to appropriate heading tag e.g. Introduction</td>
+				</tr>
+				<tr>
+					<td><code>pagebreak</code></td>
+					<td>Adds a one page break for print. <code>&lt;h2&gt;</code> have page breaks applied by default</td>
+					<td>To add blank pages</td>
+					<td>empty <code>&lt;div&gt;</code></td>
+				</tr>
+				</tbody>
+			</table>
+		</figure>
+
+		<h2>Cross-references and citations</h2>
+
+		<p>One of the most satisfying features of HSP is cross-referencing. It leverages HTML's natural internal linking abilities, known as <em>HTML targets</em>. However, HSP does some special work to differentiate and style a link to your bibliography, a figure, a table or a section heading.</p>
+
+		<h3>HTML internal linking</h3>
+
+		<p>HTML internal links are simple, and the basis for HSP cross-referencing. Normally your <code>&lt;a&gt;</code> tags have a <code>href</code> value that points to an external URL e.g. <code>href='https://do.meni.co'</code>. An internal link instead uses the ID of any element prefixed with a <code>#</code>. If you want to link to an element with the ID <code>myAmazingThing</code> your link will be <code>href='#myAmazingThing'</code>. The user that clicks on this will be moved to that element. </p>
+
+		<h3>Cross-reference types</h3>
+
+		<p>There are four cross reference types that get special treatment in HSP, described in the table below with examples and descriptions.</p>
+
+		<figure id="tab-cross-ref-types">
+			<table>
+				<thead>
+				<tr>
+					<th>Cross reference type</th>
+					<th>Example output</th>
+					<th>Description</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Section heading</td>
+					<td><code>Section Title [§ 1.2.3]</code></td>
+					<td>Title is copied along with automatic numbering and section symbol</td>
+				</tr>
+				<tr>
+					<td>Figure</td>
+					<td><code>Figure 1.2</code></td>
+					<td>Figure label along with automatic numbering and caption on hover</td>
+				</tr>
+				<tr>
+					<td>Table</td>
+					<td><code>Table 1.2</code></td>
+					<td>Table label along with automatic numbering and caption on hover</td>
+				</tr>
+				<tr>
+					<td>Bibliography citation</td>
+					<td><code>[12]</code> or <code>[12, pp.11-23]</code></td>
+					<td>Automatic numbering OR automatic numbering with custom text from text within link anchor e.g. <code>&lt;a href='#citation:2022'&gt;pp.11-23&lt;/a&gt;</code>. Citation text from bibliography shown on hover</td>
+				</tr>
+				</tbody>
+			</table>
+		</figure>
+
+		<h4>Recommendations for cross-reference IDs</h4>
+
+		<p>Cross-reference IDs are set manually, except for section heading IDs which are generated automatically for the side menu navigation. You must exercise caution in naming your IDs. HSP will notify you if you have any attempted internal links which are not working i.e. href beginning with a <code>#</code> and no corresponding ID. Recommendations are as follows:</p>
+
+		<ul>
+		<li>For bibliography items use an ID which is distinct. An author surname, combined with year and a unique character combination should be enough to create a unique ID e.g. <code>id=&quot;surname-2022-01</code>. The included demos use BibTeX style cite keys e.g. <code>id=&quot;Mazza:2017kn&quot;</code></li>
+		<li>Make figure and table IDs easy to distinguish and nice looking in any links by prefixing them with 'fig-' and 'tab-' respectively (e.g. <code>id='fig-graph-1'</code>)</li>
+		<li>If you require a neater heading ID you can assign your own section heading IDs to overwrite automatically generated IDs</li>
+		</ul>
+
+		<h2>Optimisation</h2>
+
+		<p>Since HSP's <code>master-script.js</code> will redo all its processing on load, you can save loading time by copying all of the HTML produced by HSP and placing it into a standalone document for publication. You can easily do this by opening the document in a web browser, viewing the page source and copying all of the source code. Nb. do this in a private window without scrolling to ensure the code is free of any generated classes to highlight the current section heading.</p>
+
+		<p><code>script.js</code> is provided for you to use in place of <code>master-script.js</code> in your copied source code—it is for navigation only (scroll position and side menu visibility saving and loading, and current section highlighting).</p>
+
+		<p>This optimisation is a requirement for generating print ready PDFs as described ahead in <em>Print-ready PDFs</em>.</p>
+
+		<p>Check out optimised versions of the demo exegesis at <a href="https://do.meni.co/phd" target="_blank">https://do.meni.co/phd</a> and exhibition documentation at <a href="https://do.meni.co/phd/exhibition" target="_blank">https://do.meni.co/phd/exhibition</a>.</p>
+
+		<h2>Print-ready PDFs</h2>
+
+		<p><a href="https://www.princexml.com" target="_blank">Prince</a> can be used to generate print ready PDFs from HSP documents, for free for non-commercial use. Once Prince is installed, the command to output a PDF can be as simple as: <code>prince index.html -o output.pdf</code></p>
+
+		<h2>Colophon</h2>
+
+		<p>HSP was born with love at the end of the author's PhD. Making research writing as easy to access as possible is at the heart of this project.</p>
+
+		<p>The default typeface used in HSP is <em>Roboto Mono</em> by Christian Robertson, available at <a href="https://fonts.google.com/specimen/Roboto+Mono" target="_blank">Google Fonts</a>. This typeface is distributed under an Apache License, Version 2.0.</p>
+
+		<h2>License</h2>
+
+		<p>HSP is distributed under a GNU GPLv3 license. The publications in the <code>/demo</code> directory maintain their respective copyright and have their own copyright notice.</p>
+
+	</article>
+	</main>
+
+</body>
+</html>

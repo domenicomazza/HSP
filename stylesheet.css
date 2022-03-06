@@ -1,0 +1,961 @@
+/*===
+ HSP v1.0.0 (06-March-2022)
+ https://do.meni.co/hsp
+
+ Core CSS
+===*/
+
+/*===
+Global styles
+===*/
+
+/* fonts via https://google-webfonts-helper.herokuapp.com/fonts */
+
+/* roboto-mono-regular - latin */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url('type/roboto-mono-v7-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Mono'), local('RobotoMono-Regular'),
+       url('type/roboto-mono-v7-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('type/roboto-mono-v7-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('type/roboto-mono-v7-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('type/roboto-mono-v7-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('type/roboto-mono-v7-latin-regular.svg#RobotoMono') format('svg'); /* Legacy iOS */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-2013, U+2015-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;/* range excludes em dash U+2014 to ensure short em dash from Roboto Mono is not used */
+}
+/* roboto-mono-italic - latin */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  font-weight: 400;
+  src: url('type/roboto-mono-v7-latin-italic.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Mono Italic'), local('RobotoMono-Italic'),
+       url('type/roboto-mono-v7-latin-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('type/roboto-mono-v7-latin-italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('type/roboto-mono-v7-latin-italic.woff') format('woff'), /* Modern Browsers */
+       url('type/roboto-mono-v7-latin-italic.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('type/roboto-mono-v7-latin-italic.svg#RobotoMono') format('svg'); /* Legacy iOS */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-2013, U+2015-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;/* range excludes em dash U+2014 to ensure short em dash from Roboto Mono is not used */
+}
+/* roboto-mono-700 - latin */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url('type/roboto-mono-v7-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Mono Bold'), local('RobotoMono-Bold'),
+       url('type/roboto-mono-v7-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('type/roboto-mono-v7-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('type/roboto-mono-v7-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('type/roboto-mono-v7-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('type/roboto-mono-v7-latin-700.svg#RobotoMono') format('svg'); /* Legacy iOS */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-2013, U+2015-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;/* range excludes em dash U+2014 to ensure short em dash from Roboto Mono is not used */
+}
+/* roboto-mono-700italic - latin */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  font-weight: 700;
+  src: url('type/roboto-mono-v7-latin-700italic.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Mono Bold Italic'), local('RobotoMono-BoldItalic'),
+       url('type/roboto-mono-v7-latin-700italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('type/roboto-mono-v7-latin-700italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('type/roboto-mono-v7-latin-700italic.woff') format('woff'), /* Modern Browsers */
+       url('type/roboto-mono-v7-latin-700italic.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('type/roboto-mono-v7-latin-700italic.svg#RobotoMono') format('svg'); /* Legacy iOS */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-2013, U+2015-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;/* range excludes em dash U+2014 to ensure short em dash from Roboto Mono is not used */
+}
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+a{
+	color: blue;
+	text-decoration: none;
+}
+
+body, button, h1, h2, h3, h4, h5, h6{
+	font-family: 'Roboto Mono', sans-serif;
+}
+
+body{
+	display: flex;
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
+	--navBgColour: gold;/* global variable for side menu background colour */
+}
+
+button{
+	border: none;
+}
+
+button:active{
+	color: #000;
+}
+
+h1, h2, h3, h4, h5, h6{
+	line-height: 1.3em;
+	font-weight: 600;
+}
+
+h1{
+	font-size: 2.3em;
+}
+
+h2{
+	font-size: 1.7em;
+}
+
+h3{
+	font-size: 1.5em;
+}
+
+h4{
+	font-size: 1.3em;
+}
+
+.h1{
+	font-size: 1.2em;
+}
+
+.h2, .h3, .h4, .h5, p, ul > li, ol > li, h5, h6{/* font size for body text */
+	font-size: 1.1em;
+}
+
+#nav button{
+	font-size: 1em;
+}
+
+#nav button{
+	opacity: .5;
+}
+
+p, ul > li, ol > li{/* leading for body text*/
+	line-height: 1.65em;
+}
+
+figure table{
+	margin: 0 auto;/* center align tables in figures */
+}
+
+table td, table th{/* restrict width of table cells to ensure easy reading*/
+	max-width: 480px;
+}
+
+table li{/* smaller line-height in lists for tables */
+	line-height: 1.45em;
+}
+
+td > ul > li{/* hang bullets inside for tables */
+	list-style-position: inside;
+}
+
+ul > ul > li{/* indent nested lists */
+	margin-left: 1.1em;
+}
+
+ul > ul > ul > li{/* indent double nested lists */
+	margin-left: 2.2em;
+}
+
+td > ul{/* correct bullet position for hung bullets in tables */
+	padding-left: 1em;
+	text-indent: -1em;
+}
+
+figcaption{
+	font-size: 0.85em;
+}
+
+sup { vertical-align: top; position: relative; top: -0.3em; }/* fix sup from affecting line height */
+
+.noselect{/* From https://stackoverflow.com/a/4407335 */
+-webkit-touch-callout: none; /* iOS Safari */
+-webkit-user-select: none; /* Safari */
+-khtml-user-select: none; /* Konqueror HTML */
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* Internet Explorer/Edge */
+user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+/*===
+<nav> and #contentsDiv styles
+===*/
+
+#nav{
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+	-o-transition: all .3s linear;
+	transition: all .3s linear;
+	position: relative;
+	/*display: flex;*/
+	z-index: 1000;/* put nav on top of everything */
+}
+
+#nav.open nav, #nav.closed > span{/* styles for nav panel */
+	top: 0;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+	background-color: var(--navBgColour);
+}
+
+#nav.open button, #nav.closed button{/* styles for nav buttons */
+	position: absolute;/* ensures element is positioned relative to parent */
+	top: 50vh;
+	right: 0;
+	width: 180px;
+	transform: translateY(-50%) translateX(69px) rotate(-90deg);/* pixel translateX is based on element width */
+	padding: 5px;
+	cursor: pointer;
+	background: none;
+}
+
+#nav.open button{/* resolves scrolling button bug, remove to back to default */
+	position: fixed;
+	left: 220px;
+}
+#nav.open-with-scrollbar button{/* overwrite above if scrollbar is detected, 15px is subtracted from left position value*/
+	left: 205px;
+}
+
+#nav.closed nav, #nav.open > span{/* hide nav on close and hide nav open button on close */
+	display: none;
+}
+
+#nav.open{/* the surrounding nav box, expand nav with open class*/
+	flex: 0 0 400px;
+}
+
+#nav.open nav{/* the visible nav, show nav when open */
+	width: 360px;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;/* swing low sweet chariot */
+	/* padding: 40px 50px; */
+	padding: 0 40px 0 0;
+}
+
+#nav a:first-of-type{/* cap start of menu with space */
+	border-top: 40px solid var(--navBgColour);
+}
+#nav a:last-of-type{/* cap end of menu with space */
+	border-bottom: 40px solid var(--navBgColour);
+}
+
+#nav.closed{/* reduce nav width with closed class */
+	flex: 0 0 43px;
+}
+
+#nav.closed > span{/* should do what nav does as a container for the closed button */
+	width: 43px;
+}
+
+nav a, #contentsDiv a{
+	display: block;/* make sure nav items sit one under another */
+}
+
+nav a:before, #contentsDiv a:before{
+	color: #000/* make sure counters are not hyperlink styled */
+}
+
+nav a.h1, nav a.h2, nav a.h3, nav a.h4, nav a.h5,
+#contentsDiv a.h1, #contentsDiv a.h2, #contentsDiv a.h3, #contentsDiv a.h4, #contentsDiv a.h5{/* all headings in <nav> */
+	padding-bottom: .4em;
+	padding-top: .4em;
+	border-bottom: 1px solid rgba(0,0,0,.1);/* faint ruled lines to help seperate the headings in nav */
+}
+
+nav a.h2{/* H2 nav */
+	padding-left: calc(30px + 0.5em);
+	padding-right: 30px;
+}
+
+nav a.h3{/* H3 nav */
+	/*text-indent: 2.6em; indent subsections on multiple lines, text-indent only works on first line */
+	padding-left: calc(30px + 2.45em);/* add 50px standard margin to indent */
+	padding-right: 30px;
+}
+#contentsDiv a.h3{/* H3 print-only contents */
+	padding-left: 2.45em;
+}
+
+nav a.h4{/* H4 nav */
+	padding-left: calc(30px + 3.7em);/* add 50px standard margin to indent */
+	padding-right: 30px;
+}
+#contentsDiv a.h4{/* H4 print-only contents */
+	padding-left: 3.7em;
+}
+
+nav a.h5{/* H5 nav */
+	padding-left: calc(30px + 4.9em);/* add 50px standard margin to indent */
+	padding-right: 30px;
+}
+#contentsDiv a.h5{/* H4 print-only contents */
+	padding-left: 4.9em;
+}
+
+nav a.h2:before, #contentsDiv a.h2:before{
+	/* hang the h2 item counts in contents and nav */
+	margin-left: -1.7em;
+	width: 1.5em;
+	margin-right: .2em;
+	display: inline-block;
+	text-align: center;
+}
+
+nav a.h3:before, nav a.h4:before, nav a.h5:before,
+#contentsDiv a.h3:before, #contentsDiv a.h4:before, #contentsDiv a.h5:before{
+	/* hang the h3 h4 item counts in contents and nav */
+	margin-left: -2em;
+	width: 2em;
+	display: inline-block;
+	text-align: right;
+}
+
+nav a.h3:before, nav a.h4:before,
+#contentsDiv a.h3:before, #contentsDiv a.h4:before{
+	margin-left: -3.7em;
+	width: 3.7em;
+}
+
+nav a.h5:before,
+#contentsDiv a.h5:before{
+	margin-left: -5.2em;
+	width: 5.2em;
+}
+
+nav .nolist{/* hide nolist class elements from <nav> and #contentsDiv WITHOUT display: none; otherwise numbering gets mucked up */
+	visibility: hidden;
+	position: absolute;
+}
+#contentsDiv .nolist{
+	display: none;
+}
+
+nav a.active{/* active nav item style */
+	color: #000;
+	background-color: white;
+}
+
+nav a.active:after{/* pointer for active nav item */
+	content: " \02190";
+	line-height: 1em;
+	border-bottom: 0;
+	position: absolute;/* stops it from breaking to a new line*/
+	padding: .25em;/* since top/left positioning won't work, padding provides the required space */
+}
+
+/*===
+article text styles
+===*/
+
+main{
+	display: flex;
+	flex: 1 1 auto;/* stretch rules */
+	margin-top: 30px;
+	margin-left: 70px;/* set to 70px for print */
+	margin-right: 60px;
+	margin-bottom: 100px;/* extra space to make sure bib link target is highlighted */
+	justify-content: center;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6,
+article li,
+article p{
+	max-width: 800px;
+	word-break: break-word;/* allows lines to break when window is shrunk, non-standard value but it works */
+	/*orphans: 3;
+	widows: 3; */
+}
+
+article h1, article h2{
+/*text-align: center;*/
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+article h2{
+	padding-top: 1em;
+}
+
+/*article h3{ indenting h3 and h4 text
+	padding-left: 2.2em;
+}
+article h3 + p{
+	padding-left: 3em;
+}
+
+article h4{
+	padding-left: 2.7em;
+}
+article h4 + p{
+	padding-left: 3.4em;
+}*/
+
+/*article h1, article h2, */article h3, article h4, article h5, article h6, figure{/* under all headings */
+	padding-top: .5em;/* when target hits make sure there is space above target */
+	margin-bottom: .5em;
+}
+
+article h2:before, article h3:before, article h4:before, article h5:before{
+	/* align counts */
+	display: inline-block;
+	text-align: left;
+	/*background-color: green;*/
+}
+
+article h2:before{
+	margin-left: -1.4em;
+	width: 1.4em;
+}
+
+article h3{
+	/*padding-left: .85em; for alignment with h2 marker*/
+	padding-left: 2.25em;
+}
+
+article h3:before{
+	margin-left: -2.45em;
+	width: 2.45em;
+}
+
+article h4{
+	/*padding-left: 2.05em;*/
+	padding-left: 3.6em;
+}
+
+article h4:before{
+	margin-left: -3.7em;
+	width: 3.7em;
+}
+
+article h5{
+	padding-left: 5.1em;
+}
+
+article h5:before{
+	margin-left: -5.2em;
+	width: 5.2em;
+}
+
+article h6{
+	/* display: list-item;
+	list-style-type: disc;
+	list-style-position: inside; */
+	margin-bottom: 1em;
+}
+
+article h2.nocount, article h3.nocount, article h4.nocount, article h5.nocount{/* reset for spacing for nocount as they don't need space for markers */
+	padding-left: initial;
+}
+
+p + *,
+figure + *,
+article > ul + *,
+article > ol + *,
+article > ul * + *,
+article > ol * + *,
+article div + *{/* p following any element and so on, including after any divs used for dynamic content */
+	margin-top: .9em;
+}
+
+article > ul > li:target/*:before*/{/* highlight bib items */
+	/*content: "\1f449"; right pointing hand 
+	margin-right: 10px;
+	font-size: 1.5em;
+	line-height: 0;*/
+	/*text-decoration: underline;*/
+	background-color: #eee;
+}
+
+article > ul > li > ul{/* nested list style */
+	margin-left: 1em;
+}
+
+article a.videoLink:before, #bibliographyDiv li.videoLink a:last-of-type:before{/* symbol for video links in article, and last link in videoLink class bibliography items as video link is placed at end */
+	content: "▶ "
+}
+
+article a[data-section-ref]:not(#contentsDiv a):after{/* target all links with section count data attribute EXCLUDING contents div links */
+	content: " [\00A7\0000a0 " attr(data-section-ref) "]";/* section sign followed by space and count wrapped with square brackets */
+}
+
+.secondary, .greyout{/* secondary info classes */
+	color: darkgrey;
+}
+.greyout a, .secondary a{/* grey but darker links */
+	color: dimgrey;
+}
+
+div .secondary{
+	font-size: .9em;
+	line-height: 1.6em;
+}
+
+.secondary{
+	max-width: 80%;/* to prevent secondary text dragging on as long as the text above it in the figcaption */
+	display: block;/* ensure stacking and that max-width is applied */
+}
+
+figcaption .secondary{/* make sure text stays centred because of max-width applied*/
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: .3em;/* space on top */
+}
+
+.center{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+code{
+	background: #eee;
+	font-size: 1.2em;
+	padding: .2em;
+}
+
+/*===
+Figures & Tables
+===*/
+
+#figureListDiv p, #tableListDiv p{
+	display: flex;
+}
+
+/* override figure and table numbering in print to add page numbers SHOULD HIDE FROM web build as browsers will reject the rules and mess up the numbering */
+#figureListDiv p > a:first-of-type,
+#tableListDiv p > a:first-of-type{/* ensure page number gets pushed under table or figure number */
+	width: 8em;
+}
+
+#figureListDiv p > a:first-of-type, #tableListDiv p > a:first-of-type{
+	flex-shrink: 0;/* no breaking of link */
+}
+
+#figureListDiv span, #tableListDiv span{/* resets for styles applied in figcaption */
+	background-color: initial!important;/* removes background colour applied to spans in figcaptions for charts */
+}
+
+#figureListDiv p > a[data-figure-ref]:first-of-type:before{/* counter for appendix figure item in list of figures */
+	content: "Figure " attr(data-figure-ref);
+	font-weight: bold;
+}
+
+#tableListDiv p > a[data-table-ref]:first-of-type:before{/* add table count to table list based on presence of data attribute */
+	content: "Table " attr(data-table-ref);
+	font-weight: bold;
+}
+
+#figureListDiv a.h1,
+#figureListDiv a.h2,
+#figureListDiv a.h3,
+#figureListDiv a.h4,
+#figureListDiv a.h5,
+#tableListDiv a.h1,
+#tableListDiv a.h2,
+#tableListDiv a.h3,
+#tableListDiv a.h4,
+#tableListDiv a.h5{
+	display: block;/* arrange heading anchors into list and hide */
+	visibility: hidden;
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	font-size: 1.3em;
+	color: #000;
+	font-weight: bold;
+	pointer-events: none;/* disable links, too much to add links here too but still useful for JS and hiding headers without figures */
+}
+
+#figureListDiv p, #tableListDiv p{/* list of figures headers and figure captions */
+	margin-bottom: 1em;
+}
+
+figure{
+	width: 100%;
+	max-width: 800px;
+	/*display: inline-block;*/
+	text-align: center;
+}
+
+figure > p{/* styling for paragraphs used in figures */
+	text-align: left;
+	border: 1px solid grey;
+	padding: 10px;
+	background-color: #f7f7f7;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	/* padding: .5em; */
+}
+
+figure img + *{/* space above anything that follows an <img> in a <figure> */
+	margin-top: .6em;
+}
+
+figure > p:last-of-type{/* spacing between last paragraph and figcaption in figure */
+	margin-bottom: .9em;
+}
+
+figure q{/* figure quote highlighting */
+	font-size: 95%;
+}
+
+figure table td{
+	text-align: left;/* undo center align imposed on all figures to make sure images are centred */
+}
+
+figure > a{/* zoom cursor for anchor inside figure, for opening images */
+	cursor: zoom-in;
+}
+
+figure.fullwidth > a, figure.fullwidth > a > img, figure.fullwidth > img, figure.fullwidth > video, figure.fullwidth > iframe{
+	/*max-width: 800px;*/
+	width: 100%;
+	height: auto;
+}
+
+figure.halfwidth > a, figure.halfwidth > a > img, figure.halfwidth > img, figure.halfwidth > video, figure.halfwidth > iframe{
+	max-width: 400px;
+	height: auto;
+}
+
+figure.sidebyside img{/* allow side by side images with class */
+	width: 48%;
+}
+
+figure.sidebysidethree img{/* allow side by side images with class */
+	width: 32%;
+}
+
+figure.sidebysidefour img{/* allow side by side images with class */
+	width: 24%;
+}
+
+figcaption{
+	width: 85%;
+	text-align: center;
+	margin: 0.5em auto;
+}
+
+figcaption ~ table{
+	margin-top: 1em;/* space between table if figcaption is before table */
+}
+
+figure.halfwidth figcaption{/* half-width figcaption for half-width figure */
+	width: 50%;
+}
+
+figcaption + p{/* a bit of extra space between figcaption and p */
+	margin-top: .9em;
+}
+
+figcaption[data-figure-ref]:before{/* target figcaptions with figure count data attribute */
+	content: "Figure " attr(data-figure-ref) " ";
+	font-weight: bold;
+}
+
+figcaption[data-table-ref]:before{/* target figcaptions with table count data attribute */
+	content: "Table " attr(data-table-ref) " ";
+	font-weight: bold;
+}
+
+table{
+	border-collapse: collapse;/* remove unwanted table cell spacing*/
+}
+
+td, thead th{
+	border: 1px solid gainsboro;
+}
+
+tr, td, th{
+	padding: .5em;
+}
+
+thead{
+	font-weight: bold;
+}
+
+thead tr{
+	background-color: gainsboro;
+}
+
+thead th{/* makes table heads sticky */
+	position: sticky;
+	position: -webkit-sticky;
+	top: 5px;
+	z-index: 10;
+	background: inherit;/* inherits background colour applied */
+}
+
+ .highlightTableRow{
+	text-align: center;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+	z-index: 10;
+	background-color: gainsboro;
+}
+
+table ul li{
+	font-size: 1em;
+	margin-bottom: .5em;
+}
+table ul li:last-child{/* ensure last item does not have a margin underneath it */
+	margin-bottom: 0;
+}
+
+/*===
+Heading, nav, contents, list of figures counting
+===*/
+
+nav > a.h2:before{
+	content: attr(data-section-ref);
+}
+nav > a.h2.appendix:before{
+	content: "Appendix " attr(data-section-ref) ":\0000a0";
+	margin-left: initial;
+	width: initial;
+}
+nav > a.h3:before,
+nav > a.h3.appendix:before,
+nav > a.h4:before,
+nav > a.h4.appendix:before,
+nav > a.h5:before,
+nav > a.h5.appendix:before{
+	content: attr(data-section-ref) "\0000a0";
+}
+
+article > h2:before,
+article > h2.appendix:before,
+article > h3:before,
+article > h3.appendix:before,
+article > h4:before,
+article > h4.appendix:before,
+article > h5:before,
+article > h5.appendix:before{
+	content: attr(data-section);
+}
+
+article > h2.nocount:before,
+article > h3.nocount:before,
+article > h4.nocount:before,
+article > h5.nocount:before,
+nav > a.h2.nocount:before,
+nav > a.h3.nocount:before,
+nav > a.h4.nocount:before,
+nav > a.h5.nocount:before{
+	content: none;/* hide count text from nocount items */
+}
+
+#contentsDiv > a.h2:before,
+/* #contentsDiv > a.h2.appendix:before, */
+#contentsDiv > a.h3:before,
+#contentsDiv > a.h3.appendix:before,
+#contentsDiv > a.h4:before,
+#contentsDiv > a.h4.appendix:before,
+#contentsDiv > a.h5:before,
+#contentsDiv > a.h5.appendix:before{
+	content: attr(data-section-ref) "\0000a0";
+}
+
+#contentsDiv > a.h2.appendix:before{
+	width: initial;
+	content: "Appendix " attr(data-section-ref) ": \0000a0";
+}
+
+#contentsDiv > a.h2.nocount:before,
+#contentsDiv > a.h3.nocount:before,
+#contentsDiv > a.h4.nocount:before,
+#contentsDiv > a.h5.nocount:before{
+	content: none;
+}
+
+/*===
+Mobile
+===*/
+
+@media screen and (max-width: 768px){/* for small screens */
+
+	body{
+		font-size: 80%;
+	}
+
+	#nav{/* so nav sits above content on mobile */
+		position: absolute;
+	}
+
+	#nav.open nav{/* show nav when open */
+		width: 60%;/* for some reason 100% runs off the page */
+	}
+
+	#nav.open button{/* resolves scrolling button bug, remove to back to default */
+		left: calc(60% - 137px);/* if the hide menu button dissapears check this px value */
+	}
+
+	main{
+		flex: 1 1 auto;/* stretch rules */
+		margin: 15px;
+		margin-left: 90px;
+	}
+
+}
+
+/*===
+Print styles
+===*/
+
+.printonly{/* hide elements only for print */
+	display: none;
+}
+
+@media print{
+
+	/* Resets for PrinceXML */
+	body{
+		display: initial;
+	}
+	main{
+		display: initial;
+		margin: initial;
+	}
+
+	body, html{
+		font-size: 90%;/* makes text the right size for print PDF in Safari */
+	}
+
+	figure table{
+		max-width: 600px;/* prevent print export bug */
+	}
+
+	.printonly{/* show elements only for print */
+		display: inherit;
+	}
+
+	.printnotice{/* notice to let people know about the publication links */
+		margin: 0 auto 2em auto;
+		padding: 1.5em;
+		background-color: white;
+		text-align:center;
+		max-width:500px;
+		border: 2px solid black;
+	  border-radius: 5px;
+	}
+	.printnotice a{/* prevent URL in notice from breaking */
+		white-space: nowrap;
+	}
+
+	.noprint, .noprint *{/* remove elements we don't need in the print view */
+		display: none!important;
+		visibility: hidden!important;
+	}
+
+	/* links to sections, figures and tables by data attribute to add page numbers after these links in print */
+  article a[data-figure-ref]:after, article a[data-table-ref]:after{
+		content: " (p." target-counter(attr(href, url), page) ")";
+	}
+	/* special rule for section references as they already use :after outside of these print rules */
+	article a[data-section-ref]:not(#contentsDiv a):after{
+		content: " [\00A7\0000a0 " attr(data-section-ref) "] (p." target-counter(attr(href, url), page) ")";
+	}
+
+	thead th, .highlightTableRow{/* reset sticky table headers */
+		position: initial;
+		position: initial;
+	}
+
+	h2, .pagebreak{/* page break before h2 and elements with page breaking class */
+		page-break-before: always;
+		margin-top: 0!important;/*  remove margin from top of heading */
+		padding-top: 0!important;/*  remove padding from top of heading */
+	}
+
+	/* adjust PDF bookmarks to refelect document hierarchy */
+	h1 { 
+	bookmark-label: "Title page";
+	bookmark-level: 1;
+	}
+	h2 { bookmark-level: 1;bookmark-state: closed; }/* set bookmarks to closed state by default */
+	h3 { bookmark-level: 2;bookmark-state: closed; }
+	h4 { bookmark-level: 3;bookmark-state: closed; }
+	h5 { bookmark-level: 4;bookmark-state: closed; }
+	h6 { bookmark-level: 5;}
+
+	figure{/* prevents figures from being broken in half */
+	  page-break-inside: avoid;
+	}
+
+	p, li, span, figcaption, h2, h3, h4, h5, h6{
+		orphans: 2;/* at least two lines on previous page */
+	    widows: 3;/* specify minimum number of lines on new pages for these elements to avoid daggy typesetting */
+	}
+
+	@page {/* set page size */
+	  size: A4 portrait;
+	  /* bleed: 6pt;
+	  marks: crop; */
+	}
+
+	@page :left {
+	  margin-left: 2.5cm;
+	  margin-right: 2.5cm;
+	  @bottom-left {
+	    font-family: 'Roboto Mono', sans-serif;
+	    content: counter(page);
+	  }
+	}
+
+	@page :right {
+	  margin-left: 3cm;/* extra margin for binding */
+	  margin-right: 2.5cm;
+	  @bottom-right {
+	    font-family: 'Roboto Mono', sans-serif;
+	    content: counter(page);
+	  }
+	}
+
+	img {
+		image-resolution: 300dpi;/* press ready print resolution for images */
+	}
+
+	#contentsDiv a{
+		position: relative;/* make sure absolute position page numbers line up to the contents box */
+		padding-right: 2.5em;
+	}
+
+	#contentsDiv a:after{/* add page numbers to contents items, manually adjust numbers next to long titles */
+		content: target-counter(attr(href, url), page);/* add page numbers to contents items */
+		position: absolute;
+		right: 0;/* align to right */
+		top: 50%;/* align to middle */
+		transform: translateY(-50%);/* align to middle */
+	}
+
+	#bibliographyDiv li{
+		widows: 7;/* make sure long bib items do not get cut */
+	}
+
+	#contentsDiv a.frontmatter:after{/* change front matter count in contents to lower roman */
+		content: target-counter(attr(href, url), page, lower-roman);
+	}
+
+	.pagenumreset, h2.frontmatter:first-of-type{/* reset page numbering, useful for abstract and introduction */
+		counter-reset: page 1;
+	}
+	
+}

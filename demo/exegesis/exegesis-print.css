@@ -1,0 +1,45 @@
+@media print{
+
+	/* EXEGESIS SPECIFIC print rules */
+
+	/* #contentsDiv a:nth-child(1):after,
+	#contentsDiv a:nth-child(2):after,
+	#contentsDiv a:nth-child(3):after,
+	#contentsDiv a:nth-child(4):after,
+	#contentsDiv a:nth-child(5):after,
+	#contentsDiv a:nth-child(6):after{add lower-roman page numbers to front matter, workaround method by picking first six items 
+		content: target-counter(attr(href, url), page, lower-roman);
+	} */
+
+	@page:nth(1) {/* center content on note page */
+	    margin-top: 13cm;  
+	}
+	@page:nth(3) {/* center content on title page */
+	    margin-top: 6cm;
+	}
+	@page:nth(4) {/* center content on copyright page */
+	    margin-top: 9cm;
+	}
+
+	/* hack method for applying roman numbers to front matter, as container stuffs up nav building script which relies on scaning children of <article> CAUTION this changes based on typesetting and should be checked whenever content changes or page size is changed */
+	@page:nth(5),:nth(7),:nth(9),:nth(11),:nth(13),:nth(15),:nth(17),:nth(19),:nth(21),:nth(23),:nth(25){
+	  @bottom-right {
+	    content: counter(page, lower-roman);
+	  }
+	}
+	@page:nth(6),:nth(8),:nth(10),:nth(12),:nth(14),:nth(16),:nth(18),:nth(20),:nth(22),:nth(24),:nth(26){
+	  @bottom-left {
+	    content: counter(page, lower-roman);
+	  }
+	}
+
+	@page:nth(1),:nth(3),:nth(2),:nth(4),:nth(8){
+		@bottom-right {
+		    content: none;/* remove page number */
+		}
+		@bottom-left {
+		    content: none;/* remove page number */
+		}
+	}
+	
+}

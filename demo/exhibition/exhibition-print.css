@@ -1,0 +1,33 @@
+@media print{
+
+	/* EXHIBITION DOC SPECIFIC print rules */
+
+	table, figure{/* RESET prevents figures and tables from being broken in half */
+	  page-break-inside: initial;
+	}
+
+	#fig-ccv0 img{/* small typesetting fix to ensure cc v0 contents stays on one page */
+		width: 47.5%;
+	}
+
+	@page:nth(1) {/* center content on note page */
+	    margin-top: 13cm;  
+	}
+	@page:nth(3) {/* center content on title page */
+	    margin-top: 6cm;
+	}
+	@page:nth(4) {/* center content on copyright page */
+	    margin-top: 9cm;
+	}
+
+
+	@page:nth(1),:nth(3),:nth(2),:nth(4){
+		@bottom-right {
+		    content: none;/* remove page number */
+		}
+		@bottom-left {
+		    content: none;/* remove page number */
+		}
+	}
+	
+}

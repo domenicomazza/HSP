@@ -1,0 +1,229 @@
+/*===
+Custom classes for nav, applied to headings and copied to <nav> with JS
+Note:
+- Use !important to override ID properties
+- Prefix with '#nav nav' and '#nav span' if style should only apply to <nav> and <span>. The same applies for <h2> and <h3>
+====*/
+
+h2:after,
+h3:after,
+h4:after,
+h5:after{
+	content: " ▣";
+	color: gold;
+}
+
+h2.red:after,
+h3.red:after,
+h4.red:after,
+h5.red:after{
+	content: " ▣";
+	color: crimson;
+}
+
+h2.green:after,
+h3.green:after,
+h4.green:after,
+h5.green:after{
+	content: " ▣";
+	color: forestgreen;
+}
+
+h2.blue:after,
+h3.blue:after,
+h4.blue:after,
+h5.blue:after{
+	content: " ▣";
+	color: blueviolet;
+}
+
+h2.apred:after,
+h3.apred:after,
+h4.apred:after,
+h5.apred:after{
+	content: " ▣";
+	color: lightpink;
+}
+
+h2.apblue:after,
+h3.apblue:after,
+h4.apblue:after,
+h5.apblue:after{
+	content: " ▣";
+	color: lightsteelblue;
+}
+
+h2.apgreen:after,
+h3.apgreen:after,
+h4.apgreen:after,
+h5.apgreen:after{
+	content: " ▣";
+	color: greenyellow;
+}
+
+#nav a.red,
+#nav a.green,
+#nav a.blue,
+td.red a,
+td.green a,
+td.blue a{/* gold works on coloured backgrounds */
+	color: gold;
+}
+#nav a.apred, td.apred a{
+	color: lightpink;
+}
+#nav a.apblue, td.apblue a{
+	color: lightsteelblue;
+}
+#nav a.apgreen, td.apgreen a{
+	color: greenyellow;
+}
+
+#nav nav a{/* default nav section */
+	background-color: gold;
+	color: crimson;
+}
+
+.overview-table{
+	background-color: gold;
+	color: rgba(0, 0, 0, .6);/* default text will blend into background */
+}
+.overview-table td, .overview-table th{
+	text-align: center;
+	border: 5px solid white;
+}
+.overview-table th{
+	background-color: #777;
+	color: #fff;
+	font-size: 1.2em;
+}
+.overview-table td{
+	padding: 15px 10px;
+}
+.overview-table a{
+	color: crimson;
+}
+
+#nav nav.red, #nav span.red, #nav a.red, td.red,
+#nav nav.apred, #nav span.apred, #nav a.apred, td.apred{/* red nav sections */
+	background-color: crimson;
+}
+
+#nav nav.apblue, #nav span.apblue, #nav a.apblue, td.apblue{
+	background-color: royalblue;
+}
+
+#nav nav.green, #nav span.green, #nav a.green, td.green,
+#nav nav.apgreen, #nav span.apgreen, #nav a.apgreen, td.apgreen{/* green nav sections */
+	background-color: forestgreen;
+}
+
+#nav nav.blue, #nav span.blue, #nav a.blue, td.blue{/* blue/purple nav section */
+	background-color: blueviolet;
+}
+
+#nav a.red.h2:before,
+#nav a.green.h2:before,
+#nav a.blue.h2:before{/* chapter numbers for coloured sections */
+	color: gold;
+}
+#nav nav a.active:before{/* overide colour applied to :before when active */
+	color: #000!important;
+}
+
+#nav nav a.active{/* active link highlight, coloured like body text */
+	background-color: white;
+	color: #000;
+}
+
+.description{/* description text */
+	color: firebrick;
+}
+
+.evaluation{/* evaluation text */
+	color: green;
+}
+
+.reflection{/* reflection text */
+	color: teal;
+}
+
+.fineprint{/* style for copyright notice */
+	font-size: .8em;
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+.fineprint p{
+	margin: 1em auto;
+}
+
+.smallText{/* small text for front matter */
+	font-size:.95em
+}
+
+.narrowWidth{
+	max-width: 500px;
+}
+.logoWidth{
+	width: 300px;
+}
+
+.graphFigure{/* style for graphs in figure */
+	position:relative;
+	border-left:3px solid #000;
+	border-bottom:3px solid #000;
+}
+.graphFigure > div{/* bar container */
+	display:block;
+	padding: 7px;
+	text-align:left;
+}
+.graphFigure > div > span:nth-child(1){/* graph bar labels */
+	position:absolute;
+	left:7px;
+}
+.graphFigure > div > span:nth-child(2){/* figures on bars */
+	font-weight: bold;
+	position:absolute;
+	right: 20px;/* default distance unless changed inline */
+}
+
+.maplink{
+	text-indent: -9999px;
+	width: 10%!important;
+	height: 13%!important;
+	cursor: pointer;
+	position: absolute;
+}
+
+/*===
+Custom styles
+===*/
+
+.zebraStripes tr:nth-child(even){/* help legibility of tables */
+	background-color: #f7f7f7;
+}
+
+.centerFirstCell tr td:first-of-type{/* center align text in first cell of each row */
+	text-align: center;
+}
+
+figcaption .captionBoldStyle{/* apply bold style only in figcaption */
+	font-weight: bold;
+}
+
+.empathyRed{/* interview table style */
+	background-color: lightcoral;
+}
+
+.contextYellow, .tableHighlight{/* interview table style */
+	background-color: gold;	
+}
+
+.methodPurple{/* interview table style */
+	background-color: violet;
+}
+
+.memoryGreen{/* interview table style */
+	background-color: yellowgreen;
+}
