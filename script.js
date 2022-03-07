@@ -218,9 +218,14 @@ window.onload = function(){//on window load
 
 	loadShowNavState()//loads nav open/closed and loads saved position
 
+	var windowWidth = window.innerWidth;//capture window width, to double validate onresize
+
 	//reload scroll position recorded from last session
 	document.getElementsByTagName('body')[0].onresize = function(){//on window resize
-		loadScrollPosition()//load scroll position
+		if (window.innerWidth != windowWidth) {//if window width has actually changed. There is a bug on iOS where onresize is triggered by scrolling
+			windowWidth = window.innerWidth;//update the windowWidth var to the latest window width
+			loadScrollPosition()//load scroll position
+		}
 	};
     
 }
