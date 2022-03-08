@@ -152,7 +152,7 @@ Check out optimised versions of the demo exegesis at [https://do.meni.co/phd](ht
 
 ## Print-ready PDFs
 
-[Prince](https://www.princexml.com) can be used to generate print ready PDFs from HSP documents, for free for non-commercial use. Once Prince is installed, the command to output a PDF can be as simple as: `prince index.html -o output.pdf`
+[Prince](https://www.princexml.com) can be used to generate print ready PDFs from optimised HSP documents (see Optimisation), for free for non-commercial use. Once Prince is installed, the command to output a PDF can be as simple as: `prince index.html -o output.pdf`
 
 ## Colophon
 
