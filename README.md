@@ -28,7 +28,7 @@ Two demos are included in the `/demo` directory:
 To enjoy using HSP it's recommended you have:
 - Basic HTML knowledge. Great guides are available at [Codecademy's Learn HTML](https://www.codecademy.com/learn/learn-html) or [W3Schools' HTML Tutorial](https://www.w3schools.com/html/default.asp)
 - Basic CSS knowledge, such that [selectors](https://www.w3schools.com/css/css_selectors.asp) make sense 
-- The ability write Markdown and export HTML documents using an application such as [iA Writer](https://ia.net/writer). This is a better option than manually writing all your HTML tags
+- The ability to write Markdown and export HTML documents using an application such as [iA Writer](https://ia.net/writer). This is a better option than manually writing all your HTML tags
 
 To get your hands dirty with HSP, plain JavaScript is all you need and Codecademy once again has a great [Introduction to Javascript](https://www.codecademy.com/learn/introduction-to-javascript).
 
